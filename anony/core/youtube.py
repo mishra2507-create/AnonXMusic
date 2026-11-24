@@ -139,19 +139,19 @@ class YouTube:
             "logger": DummyLogger(),
             "nocheckcertificate": True,
             "cookiefile": cookie,
-            "remote_components": ["ejs:github"],
+            "format": "(bestvideo[height<=?360][width<=?640][ext=mp4])+(bestaudio)",
         }
 
         if video:
             ydl_opts = {
                 **base_opts,
-                "format": "(bestvideo[height<=?720][width<=?1280][ext=mp4])+(bestaudio)",
+                "format": "(bestvideo[height<=?360][width<=?640][ext=mp4])+(bestaudio)",
                 "merge_output_format": "mp4",
             }
         else:
             ydl_opts = {
                 **base_opts,
-                "format": "bestaudio[ext=webm][acodec=opus]",
+                "format": "worstaudio[ext=webm]/bestaudio[ext=webm]/bestaudio",
             }
 
         def _download():
