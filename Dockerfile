@@ -20,6 +20,5 @@ COPY pyproject.toml uv.lock ./
 RUN uv sync --frozen
 
 COPY . .
-ENV MALLOC_ARENA_MAX=2
-ENV PYTHONOPTIMIZE=2
+
 CMD ["sh", "-c", "python3 -m http.server ${PORT:-8080} & bash start"]
